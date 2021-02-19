@@ -44,13 +44,15 @@
         <p class = "para1">This is a paragraph</p>
         <p class = "para2">This is another paragraph</p>
         <div id = "myDiv"></div>
-        <ul>
+        <input type = "text" id = "newItem">
+        <ul id = "list">
             <li>List item 1</li>
             <li>List item 2</li>
             <li>List item 3</li>
             <li>List item 4</li>
         </ul>
         <a href = "http://google.com">Google</a>
+        <ul id = "users"></ul>
 
     </div>
     <script>
@@ -86,10 +88,32 @@
             // $('a').removeAttr('target');
 
             // $('p').wrap('<h3>');  //Each p marked by h3
-            $('p').wrapAll('<h3>'); //Both p tag marked in one h3
-            
+            // $('p').wrapAll('<h3>'); //Both p tag marked in one h3
+
+            $('#newItem').keyup(function(e){
+                var code = e.which;
+                if(code == 13){
+                    // e.preventDefault(); //prevent default behavior
+                    $('ul').append('<li>'+e.target.value+'</li>');
+                }
+            });
+
+            // var myArr = ['Brad','Kelly','Nate','Jose'];
+
+            // $.each(myArr,function(i,val){
+            //     $('#users').append('<li>'+val+'</li>');
+            // });
+
+            var newArr = $('ul#list li').toArray();
+            console.log(newArr);
+
+              $.each(newArr,function(i,val){
+                  console.log(val.innerHTML);
+            });
 
      });
     </script>
+
+
 </body>
 </html>
